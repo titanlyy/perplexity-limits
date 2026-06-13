@@ -8,8 +8,8 @@
   --ok: #4ade80;
   --warn: #facc15;
   --danger: #f87171;
-  --text: #e2e8f0;
-  --muted: #64748b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
   --radius-lg: 14px;
   --radius-md: 10px;
   --radius-sm: 7px;
@@ -18,12 +18,12 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  width: 380px;
+  width: 400px;
   min-height: 200px;
   background: linear-gradient(160deg, #030b1a 0%, #020617 100%);
   color: var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .shell {
@@ -47,15 +47,15 @@ header {
 }
 
 .brand-icon {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
   filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
 }
 
 .brand-title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   letter-spacing: 0.01em;
   background: linear-gradient(90deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
@@ -63,7 +63,7 @@ header {
 }
 
 .brand-sub {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 1px;
 }
@@ -72,7 +72,7 @@ header {
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 5px;
+  padding: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ header {
 }
 
 .refresh-btn:hover { color: var(--accent); border-color: rgba(56, 189, 248, 0.5); }
-.refresh-btn svg { width: 15px; height: 15px; }
+.refresh-btn svg { width: 16px; height: 16px; }
 .refresh-btn.spinning svg { animation: spin 0.7s linear infinite; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -91,12 +91,12 @@ header {
   background: rgba(248, 113, 113, 0.12);
   border: 1px solid rgba(248, 113, 113, 0.4);
   border-radius: var(--radius-sm);
-  padding: 7px 9px;
-  font-size: 11.5px;
+  padding: 8px 10px;
+  font-size: 12.5px;
   color: #fca5a5;
 }
 
-/* Single column grid */
+/* Single column */
 .core-grid {
   display: flex;
   flex-direction: column;
@@ -107,16 +107,15 @@ header {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 12px 14px 11px;
+  padding: 13px 15px 12px;
   position: relative;
   overflow: hidden;
   cursor: default;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  /* Row layout: label+value on left, progress on right */
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
-  column-gap: 14px;
+  column-gap: 16px;
   align-items: center;
 }
 
@@ -138,33 +137,31 @@ header {
 
 .metric-card:hover::before { opacity: 1; }
 
-/* Label spans both columns on top row */
 .metric-label {
   grid-column: 1 / -1;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   color: var(--muted);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Value on left column */
 .metric-value-row {
   display: flex;
   align-items: baseline;
-  gap: 5px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
 .metric-value {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 38px;
+  font-weight: 800;
   line-height: 1;
-  background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+  background: linear-gradient(135deg, #f1f5f9, #cbd5e1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -176,21 +173,21 @@ header {
 }
 
 .metric-suffix {
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500;
   color: var(--muted);
 }
 
-/* Progress area on right column */
 .metric-progress-area {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   min-width: 0;
 }
 
 .progress-track {
   width: 100%;
-  height: 5px;
+  height: 6px;
   background: rgba(15, 23, 42, 0.9);
   border-radius: 999px;
   overflow: hidden;
@@ -211,7 +208,8 @@ header {
 .progress-footer {
   display: flex;
   justify-content: space-between;
-  font-size: 9.5px;
+  font-size: 11px;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -219,17 +217,17 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 1px 6px;
+  padding: 2px 7px;
   border-radius: 999px;
-  font-size: 9.5px;
-  font-weight: 500;
+  font-size: 10.5px;
+  font-weight: 600;
   border: 1px solid transparent;
 }
 
-.chip.ok { background: rgba(74,222,128,0.12); border-color: rgba(74,222,128,0.4); color: #86efac; }
-.chip.low { background: rgba(248,113,113,0.12); border-color: rgba(248,113,113,0.4); color: #fca5a5; }
+.chip.ok { background: rgba(74,222,128,0.14); border-color: rgba(74,222,128,0.45); color: #86efac; }
+.chip.low { background: rgba(248,113,113,0.14); border-color: rgba(248,113,113,0.45); color: #fca5a5; }
 .chip.empty { background: rgba(100,116,139,0.15); border-color: rgba(100,116,139,0.4); color: var(--muted); }
-.chip.free { background: rgba(56,189,248,0.12); border-color: rgba(56,189,248,0.4); color: #7dd3fc; }
+.chip.free { background: rgba(56,189,248,0.14); border-color: rgba(56,189,248,0.45); color: #7dd3fc; }
 
 .chip-dot {
   width: 5px;
@@ -239,8 +237,8 @@ header {
 }
 
 .divider-label {
-  font-size: 9.5px;
-  font-weight: 600;
+  font-size: 10.5px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
@@ -271,16 +269,16 @@ header {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 6px 9px;
+  padding: 7px 10px;
   transition: border-color 0.15s ease;
 }
 
 .source-row:hover { border-color: rgba(148,163,184,0.35); }
 
 .source-name {
-  font-size: 11px;
+  font-size: 12.5px;
+  font-weight: 600;
   color: var(--text);
-  font-weight: 500;
   text-transform: capitalize;
   white-space: nowrap;
   overflow: hidden;
@@ -288,21 +286,22 @@ header {
 }
 
 .source-nums {
-  font-size: 10px;
+  font-size: 11.5px;
+  font-weight: 500;
   color: var(--muted);
   text-align: right;
   white-space: nowrap;
 }
 
 footer {
-  font-size: 9.5px;
+  font-size: 10px;
   color: var(--muted);
   text-align: center;
   padding: 2px 0 2px;
-  opacity: 0.65;
+  opacity: 0.7;
 }
 
-footer code { font-size: 9px; opacity: 0.8; }
+footer code { font-size: 9.5px; opacity: 0.8; }
 
 .skeleton {
   background: linear-gradient(90deg, rgba(148,163,184,0.07) 25%, rgba(148,163,184,0.13) 50%, rgba(148,163,184,0.07) 75%);
