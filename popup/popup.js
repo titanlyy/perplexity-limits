@@ -55,6 +55,7 @@ function renderCore(data) {
   const grid = document.getElementById('coreGrid');
   grid.innerHTML = '';
 
+  // Free queries card
   const freeAvail = data.free_queries && data.free_queries.available;
   const freeCard = document.createElement('div');
   freeCard.className = 'metric-card';
@@ -63,38 +64,47 @@ function renderCore(data) {
     <div class="metric-value-row">
       <div class="metric-value ${freeAvail ? 'accent' : ''}">${freeAvail ? '\u221e' : '0'}</div>
     </div>
-    <div class="progress-footer" style="margin-top:2px;font-size:10px;color:var(--muted)">Fallback when Pro quota is spent</div>
+    <div class="metric-progress-area">
+      <div class="progress-footer" style="justify-content:flex-end">Fallback when Pro quota is spent</div>
+    </div>
   `;
   grid.appendChild(freeCard);
 
-  CORE_DEFS.forEach((def, i) => {
+  CORE_DEFS.forEach((def) => {
     const rem = data[def.remKey] ?? null;
     const isLow = rem !== null && rem <= 5;
     const card = document.createElement('div');
-    card.className = 'metric-card' + (i === CORE_DEFS.length - 1 && CORE_DEFS.length % 2 !== 0 ? ' full' : '');
+    card.className = 'metric-card';
     card.title = def.tip;
 
-    let body = '';
+    let valueHtml = '';
+    let progressHtml = '';
+
     if (rem === null) {
-      body = `<div class="metric-value-row"><div class="metric-value">\u2014</div></div>`;
+      valueHtml = `<div class="metric-value-row"><div class="metric-value">\u2014</div></div>`;
+      progressHtml = `<div class="metric-progress-area"></div>`;
     } else {
       const fillClass = rem === 0 ? 'empty' : isLow ? 'low' : '';
-      body = `
+      valueHtml = `
         <div class="metric-value-row">
           <div class="metric-value ${def.accent && !isLow ? 'accent' : ''}">${rem}</div>
           <div class="metric-suffix">left</div>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill ${fillClass}" style="width:0%" data-target="${rem}" data-max="200"></div>
-        </div>
-        <div class="progress-footer">
-          <span>${rem === 0 ? 'All used' : isLow ? 'Running low \u2014 use wisely' : 'Healthy headroom'}</span>
-          <span>${rem} remaining</span>
+      `;
+      progressHtml = `
+        <div class="metric-progress-area">
+          <div class="progress-track">
+            <div class="progress-fill ${fillClass}" style="width:0%" data-target="${rem}" data-max="200"></div>
+          </div>
+          <div class="progress-footer">
+            <span>${rem === 0 ? 'All used' : isLow ? 'Running low \u2014 use wisely' : 'Healthy headroom'}</span>
+            <span>${rem} remaining</span>
+          </div>
         </div>
       `;
     }
 
-    card.innerHTML = `<div class="metric-label">${def.label}</div>${body}`;
+    card.innerHTML = `<div class="metric-label">${def.label}</div>${valueHtml}${progressHtml}`;
     grid.appendChild(card);
   });
 
@@ -144,9 +154,11 @@ function renderSkeleton() {
   const grid = document.getElementById('coreGrid');
   grid.innerHTML = Array(5).fill(0).map(() => `
     <div class="metric-card">
-      <div class="metric-label skeleton" style="width:55%;height:10px;margin-bottom:10px"></div>
-      <div class="skeleton" style="width:45%;height:22px;margin-bottom:8px"></div>
-      <div class="progress-track"><div class="progress-fill skeleton" style="width:50%"></div></div>
+      <div class="metric-label skeleton" style="grid-column:1/-1;width:55%;height:10px;margin-bottom:10px"></div>
+      <div class="skeleton" style="width:60px;height:32px"></div>
+      <div class="metric-progress-area">
+        <div class="progress-track"><div class="progress-fill skeleton" style="width:50%"></div></div>
+      </div>
     </div>
   `).join('');
 }

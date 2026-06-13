@@ -96,9 +96,10 @@ header {
   color: #fca5a5;
 }
 
+/* Single column grid */
 .core-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -106,11 +107,17 @@ header {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 10px 11px 9px;
+  padding: 12px 14px 11px;
   position: relative;
   overflow: hidden;
   cursor: default;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  /* Row layout: label+value on left, progress on right */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  align-items: center;
 }
 
 .metric-card:hover {
@@ -131,29 +138,30 @@ header {
 
 .metric-card:hover::before { opacity: 1; }
 
-.metric-card.full { grid-column: span 2; }
-
+/* Label spans both columns on top row */
 .metric-label {
-  font-size: 9.5px;
+  grid-column: 1 / -1;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* Value on left column */
 .metric-value-row {
   display: flex;
   align-items: baseline;
-  gap: 4px;
-  margin-bottom: 7px;
+  gap: 5px;
+  flex-shrink: 0;
 }
 
 .metric-value {
-  font-size: 22px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1;
   background: linear-gradient(135deg, #e2e8f0, #94a3b8);
@@ -168,8 +176,16 @@ header {
 }
 
 .metric-suffix {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
+}
+
+/* Progress area on right column */
+.metric-progress-area {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .progress-track {
@@ -197,7 +213,6 @@ header {
   justify-content: space-between;
   font-size: 9.5px;
   color: var(--muted);
-  margin-top: 4px;
 }
 
 .chip {
