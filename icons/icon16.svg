@@ -1,24 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="16" y2="16" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#020617"/>
+      <stop offset="0%" stop-color="#05020c"/>
+      <stop offset="100%" stop-color="#140826"/>
     </linearGradient>
-    <linearGradient id="ring" x1="0" y1="0" x2="16" y2="16" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#818cf8"/>
+    <linearGradient id="neon" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#39f3ff"/>
+      <stop offset="50%" stop-color="#ff2bd6"/>
+      <stop offset="100%" stop-color="#39f3ff"/>
     </linearGradient>
-    <linearGradient id="check" x1="5.28" y1="8.0" x2="10.72" y2="6.08" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#4ade80"/>
-    </linearGradient>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="0.64" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.45" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
-  <rect width="16" height="16" rx="3.52" ry="3.52" fill="url(#bg)"/>
-  <circle cx="8" cy="8" r="7.36" stroke="url(#ring)" stroke-width="1.04" fill="none" filter="url(#glow)"/>
-  <circle cx="8" cy="8" r="4.48" stroke="rgba(56,189,248,0.25)" stroke-width="0.52" fill="rgba(56,189,248,0.06)"/>
-  <path d="M 5.28 8.00 L 7.36 10.08 L 10.72 6.08" stroke="url(#check)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glow)"/>
+  <rect width="16" height="16" rx="3.2" ry="3.2" fill="url(#bg)"/>
+  <g transform="translate(4.3, 2) scale(0.31)" filter="url(#glow)">
+    <path fill="none" stroke="url(#neon)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+          d="m23.566,1.398l-9.495,9.504h9.495V1.398v2.602V1.398Zm-9.496,9.504L4.574,1.398v9.504h9.496Zm-.021-10.902v36m9.517-15.596l-9.495-9.504v13.625l9.495,9.504v-13.625Zm-18.991,0l9.496-9.504v13.625l-9.496,9.504v-13.625ZM.5,10.9v13.57h4.074v-4.066l9.496-9.504H.5Zm13.57,0l9.495,9.504v4.066h4.075v-13.57h-13.57Z"/>
+  </g>
 </svg>
