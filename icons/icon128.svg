@@ -1,26 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#05020c"/>
-      <stop offset="100%" stop-color="#140826"/>
-    </linearGradient>
-    <linearGradient id="neon" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#39f3ff"/>
-      <stop offset="45%" stop-color="#5eeaff"/>
-      <stop offset="55%" stop-color="#ff2bd6"/>
-      <stop offset="100%" stop-color="#39f3ff"/>
-    </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3.8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  <rect width="128" height="128" rx="26" ry="26" fill="url(#bg)"/>
-  <g transform="translate(35, 16) scale(2.5)" filter="url(#glow)">
-    <path fill="none" stroke="url(#neon)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+  <rect width="128" height="128" rx="26" fill="#05020c"/>
+  <g transform="translate(35, 16) scale(2.5)">
+    <path fill="none" stroke="#39f3ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
           d="m23.566,1.398l-9.495,9.504h9.495V1.398v2.602V1.398Zm-9.496,9.504L4.574,1.398v9.504h9.496Zm-.021-10.902v36m9.517-15.596l-9.495-9.504v13.625l9.495,9.504v-13.625Zm-18.991,0l9.496-9.504v13.625l-9.496,9.504v-13.625ZM.5,10.9v13.57h4.074v-4.066l9.496-9.504H.5Zm13.57,0l9.495,9.504v4.066h4.075v-13.57h-13.57Z"/>
   </g>
 </svg>
